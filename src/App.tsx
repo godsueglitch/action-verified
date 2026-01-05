@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { WalletProvider } from "@/context/WalletContext";
 import { AccountabilityProvider } from "@/context/AccountabilityContext";
 import { Header } from "@/components/Header";
+import { NetworkWarningBanner } from "@/components/NetworkWarningBanner";
 import Index from "./pages/Index";
 import Dashboard from "./pages/Dashboard";
 import CreateRequest from "./pages/CreateRequest";
@@ -23,6 +24,7 @@ const App = () => (
           <Sonner />
           <BrowserRouter>
             <Header />
+            <NetworkWarningBanner />
             <Routes>
               <Route path="/" element={<Index />} />
               <Route path="/dashboard" element={<Dashboard />} />
