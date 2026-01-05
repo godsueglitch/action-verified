@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useWallet } from '@/context/WalletContext';
 import { Button } from '@/components/ui/button';
 import {
@@ -16,6 +16,16 @@ export function Header() {
   const location = useLocation();
   const [showWalletDialog, setShowWalletDialog] = useState(false);
   const [connectionError, setConnectionError] = useState<string | null>(null);
+
+  // Listen for custom event to open wallet dialog from other components
+  useEffect(() => {
+    const handleOpenWalletDialog = () => {
+      setConnectionError(null);
+      setShowWalletDialog(true);
+    };
+    window.addEventListener('open-wallet-dialog', handleOpenWalletDialog);
+    return () => window.removeEventListener('open-wallet-dialog', handleOpenWalletDialog);
+  }, []);
 
   const truncateAddress = (address: string) => {
     return `${address.slice(0, 8)}...${address.slice(-6)}`;

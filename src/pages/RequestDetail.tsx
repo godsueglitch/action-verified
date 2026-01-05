@@ -216,7 +216,7 @@ export default function RequestDetail() {
                   <p className="text-sm text-muted-foreground mb-4">
                     Connect your Cardano testnet wallet to submit your approval.
                   </p>
-                  <Button variant="wallet" onClick={connect} disabled={isConnecting}>
+                  <Button variant="wallet" onClick={() => window.dispatchEvent(new CustomEvent('open-wallet-dialog'))} disabled={isConnecting}>
                     {isConnecting ? 'Connecting...' : 'Connect Wallet'}
                   </Button>
                 </div>
