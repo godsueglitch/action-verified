@@ -48,7 +48,7 @@ export default function Dashboard() {
               <p className="text-sm text-muted-foreground mb-3">
                 Connect your Cardano testnet wallet to create requests and submit approvals.
               </p>
-              <Button variant="wallet" size="sm" onClick={connect} disabled={isConnecting}>
+              <Button variant="wallet" size="sm" onClick={() => window.dispatchEvent(new CustomEvent('open-wallet-dialog'))} disabled={isConnecting}>
                 {isConnecting ? 'Connecting...' : 'Connect Wallet'}
               </Button>
             </div>

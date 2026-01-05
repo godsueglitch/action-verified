@@ -142,7 +142,7 @@ export default function CreateRequest() {
               <p className="text-sm text-muted-foreground mb-3">
                 Connect your Cardano testnet wallet to create accountability requests.
               </p>
-              <Button variant="wallet" size="sm" onClick={connect} disabled={isConnecting}>
+              <Button variant="wallet" size="sm" onClick={() => window.dispatchEvent(new CustomEvent('open-wallet-dialog'))} disabled={isConnecting}>
                 {isConnecting ? 'Connecting...' : 'Connect Wallet'}
               </Button>
             </div>
